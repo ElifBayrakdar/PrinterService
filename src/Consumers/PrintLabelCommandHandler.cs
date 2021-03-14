@@ -7,12 +7,11 @@ namespace PrinterService.Consumers
 {
     public class PrintLabelCommandHandler:IConsumer<PrintLabelCommand>
     {
-        public Task Consume(ConsumeContext<PrintLabelCommand> context)
+        public async Task Consume(ConsumeContext<PrintLabelCommand> context)
         {
+            await Task.Delay(5000);
             var message = context.Message;
             Console.WriteLine($"Çıktınız alınıyor... Barkodunuz: {message.Label}");
-            
-            return Task.CompletedTask;
         }
     }
 }
